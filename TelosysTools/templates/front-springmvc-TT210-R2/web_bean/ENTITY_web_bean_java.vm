@@ -47,7 +47,7 @@ $beanValidation.annotations(4,$field)
 
 #end
 
-#*
+
     //----------------------------------------------------------------------
     // ENTITY LINKS ( RELATIONSHIP )
     //----------------------------------------------------------------------
@@ -55,7 +55,7 @@ $beanValidation.annotations(4,$field)
     private $link.formattedType(0) $link.formattedName(0);
 
 #end
-*#
+
     //----------------------------------------------------------------------
     // GETTER & SETTER FOR THE KEY FIELD
     //----------------------------------------------------------------------

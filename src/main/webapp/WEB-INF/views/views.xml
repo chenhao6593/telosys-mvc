@@ -20,5 +20,16 @@
   <definition name="uncaughtException" extends="default">
     <put-attribute name="body" value="/WEB-INF/views/uncaughtException.jspx" />
   </definition>
-
+  
+  <definition name="login" extends="default_jsp">
+    <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+  </definition>
+  
+  <definition name="admin" extends="default_jsp">
+    <put-attribute name="body" value="/WEB-INF/views/admin.jsp" />
+  </definition>
+  <definition name="dba" extends="default_jsp">
+    <put-attribute name="body" value="/WEB-INF/views/dba.jsp" />
+  </definition>
+  
 </tiles-definitions>

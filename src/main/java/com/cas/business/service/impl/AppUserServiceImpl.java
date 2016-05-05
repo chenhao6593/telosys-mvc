@@ -39,12 +39,6 @@ public class AppUserServiceImpl implements AppUserService {
 		AppUserEntity appUserEntity = appUserJpaRepository.findOne(id);
 		return appUserServiceMapper.mapAppUserEntityToAppUser(appUserEntity);
 	}
-	
-	@Override
-	public AppUser findBySso(String sso) {
-		AppUserEntity appUserEntity = appUserJpaRepository.findBySsoId(sso);
-		return appUserServiceMapper.mapAppUserEntityToAppUser(appUserEntity);
-	}
 
 	@Override
 	public List<AppUser> findAll() {

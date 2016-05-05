@@ -1,16 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Login page</title>
-		<link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet"></link>
-		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
-	</head>
-
-	<body>
-		<div id="mainWrapper">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<div id="mainWrapper">
 			<div class="login-container">
 				<div class="login-card">
 					<div class="login-form">
@@ -46,6 +39,3 @@
 				</div>
 			</div>
 		</div>
-
-	</body>
-</html>

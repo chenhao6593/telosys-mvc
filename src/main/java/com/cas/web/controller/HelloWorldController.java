@@ -1,5 +1,6 @@
 package com.cas.web.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +28,7 @@ import com.cas.bean.jpa.UserProfileEntity;
 import com.cas.business.service.AppUserService;
 import com.cas.business.service.UserProfileService;
 import com.cas.business.service.mapping.AppUserServiceMapper;
+import com.cas.web.listitem.UserProfileListItem;
 
 
 @Controller
@@ -40,11 +43,11 @@ public class HelloWorldController {
 	@Resource
 	private AppUserServiceMapper appUserServiceMapper;
 	
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		model.addAttribute("greeting", "Hi, Welcome to mysite");
 		return "welcome";
-	}
+	}*/
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
@@ -83,7 +86,21 @@ public class HelloWorldController {
 	public String newRegistration(ModelMap model) {
 		AppUser user = new AppUser();
 		model.addAttribute("user", user);
-		return "newuser";
+		//populateListOfUserProfileItems(model);
+		return "appUser/form";
+	}
+	
+	/**
+	 * Populates the combo-box "items" for the referenced entity "UserProfile"
+	 * @param model
+	 */
+	private void populateListOfUserProfileItems(ModelMap model) {
+		List<UserProfile> list = userProfileService.findAll();
+		List<UserProfileListItem> items = new LinkedList<UserProfileListItem>();
+		for ( UserProfile userProfile : list ) {
+			items.add(new UserProfileListItem( userProfile ) );
+		}
+		model.addAttribute("listOfUserProfileItems", items ) ;
 	}
 
 	/*

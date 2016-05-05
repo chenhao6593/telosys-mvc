@@ -19,20 +19,19 @@ import com.cas.bean.jpa.AppUserEntity;
 import com.cas.bean.jpa.UserProfileEntity;
 import com.cas.business.service.AppUserService;
 import com.cas.business.service.mapping.AppUserServiceMapper;
+import com.cas.data.repository.jpa.AppUserJpaRepository;
 
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService{
 
 	@Resource
-	private AppUserService userService;
-	@Resource
-	private AppUserServiceMapper appUserServiceMapper;
+	private AppUserJpaRepository appUserJpaRepository;
 	
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String ssoId)
 			throws UsernameNotFoundException {
-		AppUser user = userService.findBySso(ssoId);	
+		AppUserEntity user = appUserJpaRepository.findBySsoId(ssoId);	
 		System.out.println("User : "+user);
 		if(user==null){
 			System.out.println("User not found");
@@ -43,9 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	}
 
 	
-	private List<GrantedAuthority> getGrantedAuthorities(AppUser user){
-		AppUserEntity appUserEntity = new AppUserEntity();
-		appUserServiceMapper.mapAppUserToAppUserEntity(user, appUserEntity);
+	private List<GrantedAuthority> getGrantedAuthorities(AppUserEntity appUserEntity){
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
 		for(UserProfileEntity userProfile : appUserEntity.getListOfUserProfile()){

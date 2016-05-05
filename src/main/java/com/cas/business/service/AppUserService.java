@@ -20,8 +20,6 @@ public interface AppUserService {
 	 */
 	AppUser findById( Long id  ) ;
 	
-	AppUser findBySso(String sso);
-
 	/**
 	 * Loads all entities.
 	 * @return all entities

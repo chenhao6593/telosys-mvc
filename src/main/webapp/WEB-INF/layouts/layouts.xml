@@ -5,4 +5,6 @@
 <tiles-definitions>
 	<definition name="default" template="/WEB-INF/layouts/default.jspx">
 	</definition>
+	<definition name="default_jsp" template="/WEB-INF/layouts/default.jsp">
+	</definition>
 </tiles-definitions>
